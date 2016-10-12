@@ -127,17 +127,15 @@ public class CodeInput extends View {
     }
 
     private void initCustomAttributes(AttributeSet attributeset) {
-        TypedArray attributes =
-                getContext().obtainStyledAttributes(attributeset, R.styleable.core_area);
+        TypedArray attributes = getContext().obtainStyledAttributes(attributeset, R.styleable.core_area);
 
         underlineColor = attributes.getColor(R.styleable.core_area_underline_color, underlineColor);
-        underlineSelectedColor =
-                attributes.getColor(R.styleable.core_area_underline_selected_color, underlineSelectedColor);
+        underlineSelectedColor = attributes.getColor(R.styleable.core_area_underline_selected_color, underlineSelectedColor);
         hintColor = attributes.getColor(R.styleable.core_area_underline_color, hintColor);
         hintText = attributes.getString(R.styleable.core_area_hint_text);
         underlineAmount = attributes.getInt(R.styleable.core_area_codes, underlineAmount);
         textColor = attributes.getInt(R.styleable.core_area_text_color, textColor);
-        
+
         attributes.recycle();
     }
 
@@ -221,13 +219,12 @@ public class CodeInput extends View {
     }
 
     private void showKeyboard() {
-        InputMethodManager inputmethodmanager =
-                (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager inputmethodmanager = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         inputmethodmanager.showSoftInput(this, InputMethodManager.RESULT_UNCHANGED_SHOWN);
         inputmethodmanager.viewClicked(this);
     }
 
-    private void hideKeyBoard(){
+    private void hideKeyBoard() {
         InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
     }
@@ -235,6 +232,7 @@ public class CodeInput extends View {
     /**
      * Set Input type like InputType.TYPE_CLASS_PHONE, InputType.TYPE_CLASS_NUMBER
      * Doesn't work for password
+     *
      * @param inputType
      */
     public void setInputType(int inputType) {
@@ -337,7 +335,8 @@ public class CodeInput extends View {
                 }
             }
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
@@ -377,8 +376,7 @@ public class CodeInput extends View {
         invalidate();
     }
 
-    private void drawSection(int position, float fromX, float fromY, float toX, float toY,
-                             Canvas canvas) {
+    private void drawSection(int position, float fromX, float fromY, float toX, float toY, Canvas canvas) {
         Paint paint = underlinePaint;
         if (position == characters.size() && !underlined) {
             paint = underlineSelectedPaint;
